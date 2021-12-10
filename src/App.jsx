@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import Header from '../components/Header'
+import Card from '../components/Card'
 
 
 
 export default function App() {
-  const [pokemon, setPokemon] = useState([]);
-  const [sort, setSort] = useState(1);
+  const [pokemon, setPokemon] = useState([])
+  
 
   useEffect(() => {
     initialPokemon();
@@ -21,45 +23,26 @@ export default function App() {
             .then((pokemonInfo) => {
               return {
                 name: pokemon.name,
-                type: pokemonInfo.types[0].type.name
+                type: pokemonInfo.types[0].type.name,
+                img: pokemonInfo.sprites.front_default,
+                experience: pokemonInfo.base_experience,
+                height: pokemonInfo.height,
+                weight: pokemonInfo.weight
               };
             });
         });
 
         Promise.all(pokemonPromises)
           .then((allPokemonWithType) => setPokemon(allPokemonWithType));
-        });
+        });     
   }
-  
-  // function sortName(a, b) {
-  //   return result = a.name > b.name ? 1 : -1
-  //  }
+
 
   return (
     <div>
-    <header>
-      <h1>Pokemon</h1>
-      <label for="sortCharacters">Sort alphabetically:</label>
-      <select name="sortCharacters" id="sortCharacters">
-        <option value="Ascending">Ascending</option>
-        <option value="Descending">Descending</option>
-      </select>
-    </header>
-    <section>
-      {pokemon &&
-        pokemon.map((pokemon, index) => (
-          <article>
-          <h2>{pokemon.name}</h2>
-          <p>{pokemon.type}</p>
-          <button>
-            <div>More info</div>
-            {/* <img src={Pokeball} alt="" width="30" height="30" /> */}
-          </button>
-          </article>
-          //<Card key={index} name={pokemon.name} type={pokemon.type} />
-        ))}
-    </section>
+     <Header />
+    <Card pokemonArray={pokemon} />
     </div>
   );
 }
-// Übergabe der Kartenfarbe mit SC statt getColor Function in helpers.jsx
+
