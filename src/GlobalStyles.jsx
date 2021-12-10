@@ -6,7 +6,7 @@ box-sizing: border-box;
 }
 
 body {
-    margin: 5;
+    margin: 5px;
   }
 
 
