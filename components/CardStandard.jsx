@@ -1,21 +1,34 @@
-
-import Button from "./Button";
-
+import CardExtra from "./CardExtra";
+import { useState } from "react";
+import styled from "styled-components";
 
 export default function CreateCard({ pokemonArray }) {
+  const initialExtraCardState = new Array(pokemonArray.length).fill(false);
 
+  const [extraVisible, setExtraVisible] = useState(initialExtraCardState);
+
+  function showExtraCard(pokemonIndex) {
+    const extraVisibleArrayState = extraVisible.map(
+      (state, stateIndex) => stateIndex === pokemonIndex ? !state : state
+    );
+    setExtraVisible(extraVisibleArrayState);
+  }
 
   return (
     <section>
-      {pokemonArray.map((pokemon, _index) => (
-        <article key={_index}>
+      {pokemonArray.map((pokemon, pokemonIndex) => (
+        <article key={pokemonIndex}>
           <h2>Name: {pokemon.name.toUpperCase()}</h2>
           <img src={pokemon.imgFront} alt="Picture of Pokemon" />
           <p>Type: {pokemon.type.toUpperCase()}</p>
-          <Button />
-          </article>
+          <button onClick={() => showExtraCard(pokemonIndex)}>
+            {extraVisible[pokemonIndex]
+              ? "Close additional info"
+              : "Show additional info"}
+          </button>
+          {extraVisible[pokemonIndex] && <CardExtra pokemon={pokemon} />}
+        </article>
       ))}
-      
     </section>
   );
 }
