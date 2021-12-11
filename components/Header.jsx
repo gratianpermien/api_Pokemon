@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export default function Header() {
   return (
+    
     <header>
       <h1>Pokemon</h1>
       <label /*for="sort-characters"*/>
@@ -11,6 +12,8 @@ export default function Header() {
           <option value="Descending">Descending</option>
         </select>
       </label>
+    
     </header>
   );
 }
+

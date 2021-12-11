@@ -8,14 +8,14 @@ export default function CreateCard({ pokemonArray }) {
   const [extraVisible, setExtraVisible] = useState(initialExtraCardState);
 
   function showExtraCard(pokemonIndex) {
-    const extraVisibleArrayState = extraVisible.map(
-      (state, stateIndex) => stateIndex === pokemonIndex ? !state : state
+    const extraVisibleArrayState = extraVisible.map((state, stateIndex) =>
+      stateIndex === pokemonIndex ? !state : state
     );
     setExtraVisible(extraVisibleArrayState);
   }
 
   return (
-    <section>
+    <CardSection>
       {pokemonArray.map((pokemon, pokemonIndex) => (
         <article key={pokemonIndex}>
           <h2>Name: {pokemon.name.toUpperCase()}</h2>
@@ -29,6 +29,16 @@ export default function CreateCard({ pokemonArray }) {
           {extraVisible[pokemonIndex] && <CardExtra pokemon={pokemon} />}
         </article>
       ))}
-    </section>
+    </CardSection>
   );
 }
+
+
+/*-----Styled Components from here-----*/ 
+
+const CardSection = styled.section`
+display: flex;
+flex-wrap: wrap;
+margin-top: 120px;
+gap: 50px;
+`

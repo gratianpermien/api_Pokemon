@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
-import CreateCard from "../components/CardStandard";
+import CardStandard from "../components/CardStandard";
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -39,7 +39,7 @@ export default function App() {
   return (
     <div>
       <Header />
-      <CreateCard pokemonArray={pokemon} />
+      <CardStandard pokemonArray={pokemon} />
     </div>
   );
 }
