@@ -20,11 +20,11 @@ export default function App() {
               return {
                 name: pokemon.name,
                 type: pokemonInfo.types[0].type.name,
-                imgFront:  pokemonInfo.sprites.front_default,
-                imgBack:  pokemonInfo.sprites.back_default,
+                imgFront: pokemonInfo.sprites.front_default,
+                imgBack: pokemonInfo.sprites.back_default,
                 baseExperience: pokemonInfo.base_experience,
                 height: pokemonInfo.height,
-                weight: pokemonInfo.weight
+                weight: pokemonInfo.weight,
               };
             });
         });
@@ -34,7 +34,6 @@ export default function App() {
         );
       });
   }
-
 
   return (
     <div>

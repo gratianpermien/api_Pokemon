@@ -1,13 +1,17 @@
+import styled from "styled-components";
+
+
 export default function CardExtra({ pokemon }) {
   return (
     <article>
-      <div>
-        Picture from behind:
+      <p>
+        Picture from behind: <br />
         <img src={pokemon.imgBack} alt="Picture of Pokemon from back" />
-      </div>
-      <p>Base Experience: {pokemon.baseExperience}</p>
-      <p>Pokemon height: {pokemon.height}</p>
-      <p>Pokemon weight: {pokemon.weight}</p>
+      </p>
+      <div>Base Experience: {pokemon.baseExperience}</div>
+      <div>Pokemon height: {pokemon.height}</div>
+      <div>Pokemon weight: {pokemon.weight}</div>
     </article>
   );
 }
+

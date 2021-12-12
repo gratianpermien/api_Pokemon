@@ -3,49 +3,71 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function CreateCard({ pokemonArray }) {
-  const initialExtraCardState = pokemonArray.map(() => false)
+  const initialExtraCardState = pokemonArray.map(() => false);
 
   const [extraVisible, setExtraVisible] = useState(initialExtraCardState);
 
   function showExtraCard(pokemonIndex) {
-  const extraCardShowArrayInitial = initialExtraCardState.map((state, stateIndex) =>
-  stateIndex === pokemonIndex ? !state : state
-  )
-  const extraCardShowArray = extraVisible.map((state, stateIndex) =>
-  stateIndex === pokemonIndex ? !state : state
-  )
-  if (extraVisible.length>0) {
-  setExtraVisible(extraCardShowArray)
-  } else {
-    setExtraVisible(extraCardShowArrayInitial)
-  }
+    const extraCardShowArrayInitial = initialExtraCardState.map(
+      (state, stateIndex) => (stateIndex === pokemonIndex ? !state : state)
+    );
+    const extraCardShowArray = extraVisible.map((state, stateIndex) =>
+      stateIndex === pokemonIndex ? !state : state
+    );
+    if (extraVisible.length > 0) {
+      setExtraVisible(extraCardShowArray);
+    } else {
+      setExtraVisible(extraCardShowArrayInitial);
+    }
   }
 
   return (
     <CardSection>
       {pokemonArray.map((pokemon, pokemonIndex) => (
-        <article key={pokemonIndex}>
+        <Card
+          cardColor={"var(--card-color-" + pokemon.type + ")"}
+          key={pokemonIndex}
+        >
           <h2>Name: {pokemon.name.toUpperCase()}</h2>
           <img src={pokemon.imgFront} alt="Picture of Pokemon" />
-          <p>Type: {pokemon.type.toUpperCase()}</p>
-          <button onClick={() => showExtraCard(pokemonIndex)}>
+          <div>Type: {pokemon.type.toUpperCase()}</div>
+          <CardButton onClick={() => showExtraCard(pokemonIndex)}>
             {extraVisible[pokemonIndex]
               ? "Close additional info"
               : "Show additional info"}
-          </button>
+          </CardButton>
           {extraVisible[pokemonIndex] && <CardExtra pokemon={pokemon} />}
-        </article>
+        </Card>
       ))}
     </CardSection>
   );
 }
 
-
-/*-----Styled Components from here-----*/ 
+/*-----Styled Components from here-----*/
 
 const CardSection = styled.section`
-display: flex;
-flex-wrap: wrap;
-margin-top: 120px;
-gap: 50px;
-`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 120px;
+`;
+
+const Card = styled.article`
+  background-color: ${(props) => props.cardColor};
+  border: 3px solid var(--color-second);
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 15rem;
+`;
+
+const CardButton = styled.button`
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem;
+`;
