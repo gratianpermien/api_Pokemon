@@ -3,22 +3,17 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function CreateCard({ pokemonArray }) {
-  const initialExtraCardState = pokemonArray.map(() => false);
+  const initialExtraCardState = new Array(pokemonArray.length).fill(false);
 
   const [extraVisible, setExtraVisible] = useState(initialExtraCardState);
 
   function showExtraCard(pokemonIndex) {
-    const extraCardShowArrayInitial = initialExtraCardState.map(
-      (state, stateIndex) => (stateIndex === pokemonIndex ? !state : state)
-    );
-    const extraCardShowArray = extraVisible.map((state, stateIndex) =>
+    const usedArray =
+      extraVisible.length > 0 ? extraVisible : initialExtraCardState;
+    const extraCardShowArray = usedArray.map((state, stateIndex) =>
       stateIndex === pokemonIndex ? !state : state
     );
-    if (extraVisible.length > 0) {
-      setExtraVisible(extraCardShowArray);
-    } else {
-      setExtraVisible(extraCardShowArrayInitial);
-    }
+    setExtraVisible(extraCardShowArray);
   }
 
   return (

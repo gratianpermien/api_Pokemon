@@ -7,7 +7,7 @@ export default function App() {
 
   useEffect(() => {
     initialPokemon();
-  },[]);
+  }, []);
 
   function initialPokemon() {
     fetch("https://pokeapi.co/api/v2/pokemon")
@@ -36,12 +36,16 @@ export default function App() {
   }
 
   function newSortedArrayforRender(sortedArray) {
-    setPokemon(sortedArray)
+    setPokemon(sortedArray);
   }
 
   return (
     <div>
-      <Header pokemonArray={pokemon} newArray={newSortedArrayforRender} newFetch={initialPokemon}/>
+      <Header
+        pokemonArray={pokemon}
+        newArray={newSortedArrayforRender}
+        newFetch={initialPokemon}
+      />
       <CardStandard pokemonArray={pokemon} />
     </div>
   );

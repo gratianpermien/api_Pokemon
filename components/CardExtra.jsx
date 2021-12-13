@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export default function CardExtra({ pokemon }) {
   return (
     <article>
@@ -14,4 +13,3 @@ export default function CardExtra({ pokemon }) {
     </article>
   );
 }
-
