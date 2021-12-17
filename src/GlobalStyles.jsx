@@ -9,7 +9,7 @@ box-sizing: border-box;
 
 :root {
   --bg-main: darkred;
-  --bg-second: silver;
+  --bg-second: beige;
 
   --color-main: black;
   --color-second: gold;
@@ -33,7 +33,6 @@ body {
   font-family: Verdana, Helvetica;
   margin: 5px 20px;
    }
-
 
 
 `;

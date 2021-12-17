@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { NavLink } from "react-router-dom";
 
 
 export default function Navbar() {
@@ -6,9 +7,9 @@ export default function Navbar() {
     return (
         <Nav>
             <ul>
-            <li>Home</li>
-            <li>All Characters</li>
-            <li>Favourites</li>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="characters">All Characters</NavLink>
+            <NavLink to="favourites">Favourites</NavLink>
              </ul>
        </Nav>
     )
@@ -25,7 +26,7 @@ background-color: var(--bg-main);
    align-items: center;
    align-content: center;
    height: 5rem; 
-
+  
    ul{
       list-style: none; 
       display: flex;
@@ -37,22 +38,27 @@ background-color: var(--bg-main);
       padding: 0;
    }
 
-   li {
-       border-radius: .3rem;
+   a {
+      text-decoration: none;
+      border-radius: .3rem;
        color: var(--color-second);
        background-color: var(--color-main);
        display: inline-block;
        padding: .3rem;
    }
-
-   li:hover {
+  
+   a:hover {
       color: var(--color-main);
        background-color: var(--color-second);
    }   
    
-   li:active {
+   a:active {
       color: var(--color-main);
-       background-color: var(--color-second);
+      background-color: var(--color-second);
    }   
 
+   .active {
+      color: var(--color-main);
+      background-color: var(--color-second); 
+   }
 `

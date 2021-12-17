@@ -1,7 +1,25 @@
 import styled from "styled-components";
 
 
-export default function Home() {
+export default function Home({pokemonArray}) {
+
+
+let oneRandomPicPokemonTypeGrass = getRandomPicPokemonOfType("grass");
+let oneRandomPicPokemonTypeFire = {};
+let oneRandomPicPokemonTypeWater = {};
+let oneRandomPicPokemonTypeNormal = {};
+let oneRandomPicPokemonTypeBug = {};
+
+
+
+function getRandomPicPokemonOfType(type){
+  const pokemonTypeArray = pokemonArray.filter(pokemon => pokemon.type === type)
+    const randomNumber = Math.floor(Math.random() * pokemonTypeArray.length-1); 
+  console.log(randomNumber)
+ }
+
+console.log(oneRandomPicPokemonTypeGrass)
+
   return (
     <section>
       <Article>
@@ -21,5 +39,6 @@ export default function Home() {
 }
 
 const Article = styled.article`
+line-height: 1.5rem;
  margin-top: 7rem;
 `

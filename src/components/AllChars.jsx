@@ -2,7 +2,7 @@ import CardExtra from "./CardExtra";
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function CreateCard({ pokemonArray }) {
+export default function AllChars({ pokemonArray }) {
   const initialExtraCardState = new Array(pokemonArray.length).fill(false);
 
   const [extraVisible, setExtraVisible] = useState(initialExtraCardState);

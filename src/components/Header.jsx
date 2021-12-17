@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export default function Header({ pokemonArray, newArray, newFetch }) {
-  function filterPokemonArray(pokemon) {
-    pokemon === "all" && newFetch();
-    const newSortedArray = pokemonArray.filter((char) => char.type === pokemon);
-    newArray(newSortedArray);
-  }
+  
+  // function filterPokemonArray(pokemon) {
+  //   pokemon === "all" && newFetch();
+  //   const newSortedArray = pokemonArray.filter((char) => char.type === pokemon);
+  //   newArray(newSortedArray);
+  // }
 
   return (
     <Headline>

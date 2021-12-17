@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import CardStandard from "./components/CardStandard";
+import AllChars from "./components/AllChars";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 
@@ -39,21 +39,25 @@ export default function App() {
       });
   }
 
-  function newSortedArrayforRender(sortedArray) {
-    setPokemon(sortedArray);
-  }
-
+  // function newSortedArrayforRender(sortedArray) {
+  //   setPokemon(sortedArray);
+  // }
+ console.log(pokemon)
+ 
   return (
     <>
       <Header
         pokemonArray={pokemon}
-        newArray={newSortedArrayforRender}
+        // newArray={newSortedArrayforRender}
         newFetch={initialPokemon}
       />
 
-      <Home />
 
-      <CardStandard pokemonArray={pokemon} />
+      <Routes>
+      <Route path="/" element={<Home pokemonArray={pokemon} />} />
+      <Route path="characters" element={<AllChars pokemonArray={pokemon} />} />
+      </Routes>
+
       <Navbar />
     </>
   );
