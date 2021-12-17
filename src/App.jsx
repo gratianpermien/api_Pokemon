@@ -1,65 +1,54 @@
-import { useState, useEffect } from 'react'
-
-
+import Header from "./components/Header";
+import PokeCard from "./components/PokeCard";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
-  const [sort, setSort] = useState(1);
+  const [originalPokemon, setOriginalPokemon] = useState();
 
   useEffect(() => {
     initialPokemon();
   }, []);
 
   function initialPokemon() {
-    fetch('https://pokeapi.co/api/v2/pokemon')
+    fetch("https://pokeapi.co/api/v2/pokemon")
       .then((response) => response.json())
       .then((data) => {
-
         const pokemonPromises = data.results.map((pokemon) => {
           return fetch(pokemon.url)
             .then((response) => response.json())
             .then((pokemonInfo) => {
               return {
                 name: pokemon.name,
-                type: pokemonInfo.types[0].type.name
+                id: pokemonInfo.id,
+                type: pokemonInfo.types[0].type.name,
+                img: pokemonInfo.sprites.front_default,
+                strength: pokemonInfo.base_experience,
+                height: pokemonInfo.height,
+                weight: pokemonInfo.weight,
               };
             });
         });
 
-        Promise.all(pokemonPromises)
-          .then((allPokemonWithType) => setPokemon(allPokemonWithType));
+        Promise.all(pokemonPromises).then((allPokemonWithType) => {
+          setPokemon(allPokemonWithType);
+          setOriginalPokemon(allPokemonWithType);
         });
+      });
   }
-  
-  // function sortName(a, b) {
-  //   return result = a.name > b.name ? 1 : -1
-  //  }
 
   return (
-    <div>
-    <header>
-      <h1>Pokemon</h1>
-      <label for="sortCharacters">Sort alphabetically:</label>
-      <select name="sortCharacters" id="sortCharacters">
-        <option value="Ascending">Ascending</option>
-        <option value="Descending">Descending</option>
-      </select>
-    </header>
-    <section>
-      {pokemon &&
-        pokemon.map((pokemon, index) => (
-          <article>
-          <h2>{pokemon.name}</h2>
-          <p>{pokemon.type}</p>
-          <button>
-            <div>More info</div>
-            {/* <img src={Pokeball} alt="" width="30" height="30" /> */}
-          </button>
-          </article>
-          //<Card key={index} name={pokemon.name} type={pokemon.type} />
-        ))}
-    </section>
-    </div>
+    <PokeWorld>
+      <Header
+        pokemonFromApp={pokemon}
+        setPokemonFromApp={setPokemon}
+        originalPokemonFromApp={originalPokemon}
+        setOriginalPokemonFromApp={setOriginalPokemon}
+      />
+      <PokeCard pokemonFromApp={pokemon} />
+    </PokeWorld>
   );
 }
-// Übergabe der Kartenfarbe mit SC statt getColor Function in helpers.jsx
+
+const PokeWorld = styled.div``;
