@@ -42,8 +42,7 @@ export default function App() {
   // function newSortedArrayforRender(sortedArray) {
   //   setPokemon(sortedArray);
   // }
- console.log(pokemon)
- 
+
   return (
     <>
       <Header
