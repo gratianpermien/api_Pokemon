@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
-import Header from "../components/Header";
-import CardStandard from "../components/CardStandard";
+import { NavLink, Routes, Route } from "react-router-dom";
+
+import Header from "./components/Header";
+import CardStandard from "./components/CardStandard";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -40,13 +44,17 @@ export default function App() {
   }
 
   return (
-    <div>
+    <>
       <Header
         pokemonArray={pokemon}
         newArray={newSortedArrayforRender}
         newFetch={initialPokemon}
       />
+
+      <Home />
+
       <CardStandard pokemonArray={pokemon} />
-    </div>
+      <Navbar />
+    </>
   );
 }

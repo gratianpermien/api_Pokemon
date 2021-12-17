@@ -8,7 +8,7 @@ box-sizing: border-box;
 }
 
 :root {
-  --bg-main: dimgrey;
+  --bg-main: darkred;
   --bg-second: silver;
 
   --color-main: black;
@@ -23,6 +23,10 @@ box-sizing: border-box;
 }
 
 
+a {
+   color: var(--bg-main);
+  }
+
 body {
   color: var(--color-main);
   background-color: var(--bg-second);
@@ -30,24 +34,6 @@ body {
   margin: 5px 20px;
    }
 
-h1 {
- font-size: 3rem;
-  margin: 0;
-}
 
-
-header {
-  align-content: center;
-  align-items: center;
-  background-color: var(--bg-main);
-  color: var(--color-second);
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-}
 
 `;

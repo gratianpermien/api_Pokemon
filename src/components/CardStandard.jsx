@@ -43,26 +43,27 @@ export default function CreateCard({ pokemonArray }) {
 const CardSection = styled.section`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1rem;
   justify-content: center;
-  margin-top: 120px;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
 `;
 
 const Card = styled.article`
   background-color: ${(props) => props.cardColor};
-  border: 3px solid var(--color-second);
-  border-radius: 20px;
+  border: 3px solid var(--bg-main);
+  border-radius: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 1rem;
   width: 15rem;
 `;
 
 const CardButton = styled.button`
   border: none;
-  border-radius: 20px;
+  border-radius: 1rem;
   padding: 0.5rem;
 `;
