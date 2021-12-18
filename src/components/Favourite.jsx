@@ -1,8 +1,12 @@
+
+
+
+
 import CardExtra from "./CardExtra";
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function AllChars({ pokemonArray }) {
+export default function Favourite({ pokemonArray }) {
   const initialExtraCardState = new Array(pokemonArray.length).fill(false);
 
   const [extraVisible, setExtraVisible] = useState(initialExtraCardState);
@@ -23,20 +27,14 @@ export default function AllChars({ pokemonArray }) {
           cardColor={"var(--card-color-" + pokemon.type + ")"}
           key={pokemonIndex}
         >
-          
-          <h2>Name: {pokemon.name.toUpperCase()}  </h2> 
+          <h2>Name: {pokemon.name.toUpperCase()}</h2>
           <img src={pokemon.imgFront} alt="Picture of Pokemon" />
-        
-          
           <div>Type: {pokemon.type.toUpperCase()}</div>
-          
-        
-          
           <CardButton onClick={() => showExtraCard(pokemonIndex)}>
             {extraVisible[pokemonIndex]
               ? "Close additional info"
               : "Show additional info"}
-          </CardButton>  <img src="/src/img/bookmark-plus.png" alt="Bookmarg Sign" />
+          </CardButton>
           {extraVisible[pokemonIndex] && <CardExtra pokemon={pokemon} />}
         </Card>
       ))}
@@ -51,7 +49,7 @@ const CardSection = styled.section`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  margin-top: 8rem;
+  margin-top: 6rem;
   margin-bottom: 6rem;
 `;
 
@@ -59,7 +57,6 @@ const Card = styled.article`
   background-color: ${(props) => props.cardColor};
   border: 3px solid var(--bg-main);
   border-radius: 1rem;
-  margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -67,8 +64,7 @@ const Card = styled.article`
   align-items: center;
   padding: 1rem;
   width: 15rem;
-
-`
+`;
 
 const CardButton = styled.button`
   border: none;

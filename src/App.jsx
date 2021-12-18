@@ -8,6 +8,7 @@ import Home from "./components/Home";
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
+  const [favouritePokemons, setFavouritePokemons] = useState([]);
 
   useEffect(() => {
     initialPokemon();
@@ -29,6 +30,7 @@ export default function App() {
                 baseExperience: pokemonInfo.base_experience,
                 height: pokemonInfo.height,
                 weight: pokemonInfo.weight,
+                id: pokemonInfo.id
               };
             });
         });

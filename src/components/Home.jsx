@@ -2,17 +2,15 @@ import styled from "styled-components";
 
 export default function Home({ pokemonArray }) {
   let oneRandomPicPokemonTypeGrass =
-    pokemonArray.length ? getRandomPicPokemonOfType("grass") : "";
+    pokemonArray.length > 0 ? getRandomPicPokemonOfType("grass") : "";
   let oneRandomPicPokemonTypeFire =
-    pokemonArray.length ? getRandomPicPokemonOfType("fire") : "";
+    pokemonArray.length > 0 ? getRandomPicPokemonOfType("fire") : "";
   let oneRandomPicPokemonTypeWater =
-    pokemonArray.length ? getRandomPicPokemonOfType("water") : "";
+    pokemonArray.length > 0 ? getRandomPicPokemonOfType("water") : "";
   let oneRandomPicPokemonTypeNormal =
-    pokemonArray.length ? getRandomPicPokemonOfType("normal") : "";
+    pokemonArray.length > 0 ? getRandomPicPokemonOfType("normal") : "";
   let oneRandomPicPokemonTypeBug =
-    pokemonArray.length ? getRandomPicPokemonOfType("bug") : "";
-
-console.log(pokemonArray)
+    pokemonArray.length > 0 ? getRandomPicPokemonOfType("bug") : "";
 
   function getRandomPicPokemonOfType(type) {
     const pokemonTypeArray = pokemonArray.filter(
