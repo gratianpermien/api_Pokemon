@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function SelectSort({ pokemonFromHeader, setPokemonFromHeader }) {
+function SelectSort({ allPokemon, onSetPokemon }) {
   const [sortDirection, setSortDirection] = useState("ascending");
   const [sortAttribute, setSortAttribute] = useState("id");
 
@@ -8,7 +8,7 @@ function SelectSort({ pokemonFromHeader, setPokemonFromHeader }) {
 
   const sortPokemon = () => {
     console.log({ sortAttribute, sortDirection });
-    const copy = [...pokemonFromHeader];
+    const copy = [...allPokemon];
     const sorted = copy.sort((a, b) => {
       if (sortDirection === "ascending") {
         return a[sortAttribute] > b[sortAttribute] ? 1 : -1;
@@ -16,8 +16,7 @@ function SelectSort({ pokemonFromHeader, setPokemonFromHeader }) {
         return a[sortAttribute] > b[sortAttribute] ? -1 : 1;
       }
     });
-    setPokemonFromHeader(sorted);
-    console.log({ copy, sorted, pokemonFromHeader });
+    onSetPokemon(sorted);
   };
 
   const changeSortAttribute = (event) => {

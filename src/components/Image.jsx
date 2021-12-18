@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-function PokeImg({ pokemonFromCard, selectedFromCard }) {
+function Image({ allPokemon, selectedFromCard }) {
   return (
     <div>
-      {pokemonFromCard.length && (
-        <PokeImage src={pokemonFromCard[selectedFromCard].img} alt='Nö' />
+      {allPokemon.length && (
+        <PokeImage src={allPokemon[selectedFromCard].img} alt='Nö' />
       )}
     </div>
   );
 }
 
-export default PokeImg;
+export default Image;
 
 const PokeImage = styled.img`
   position: fixed;

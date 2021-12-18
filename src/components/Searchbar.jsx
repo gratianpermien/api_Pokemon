@@ -1,10 +1,10 @@
-function Searchbar({ originalPokemon, setPokemonFromHeader }) {
+function Searchbar({ allFilteredPokemon, onSetPokemon }) {
   const filterPokemon = (event) => {
     const searchString = event.target.value;
-    const searchedPokemon = originalPokemon.filter((onePokemon) =>
+    const searchedPokemon = allFilteredPokemon.filter((onePokemon) =>
       onePokemon.name.includes(searchString)
     );
-    setPokemonFromHeader(searchedPokemon);
+    onSetPokemon(searchedPokemon);
   };
   return (
     <>
