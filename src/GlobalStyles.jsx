@@ -6,7 +6,9 @@ box-sizing: border-box;
 }
 
 body {
-    margin: 5;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
   }
 
 

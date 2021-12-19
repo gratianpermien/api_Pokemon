@@ -1,9 +1,24 @@
+import PokemonLogo from "../images/PokemonLogo.svg";
+import styled from "styled-components";
+
 function Header({}) {
   return (
-    <header>
-      <h1>Gotta catch 'em all</h1>
-    </header>
+    <StyledHeader>
+      <h1>
+        <img src={PokemonLogo} alt='POKEMON' width='80%' height='80%' />
+      </h1>
+    </StyledHeader>
   );
 }
 
 export default Header;
+
+const StyledHeader = styled.header`
+  background-color: #cc0000;
+  position: sticky;
+  h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+`;

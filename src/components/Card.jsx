@@ -13,7 +13,7 @@ function Card({
     <>
       {allPokemon.length &&
         allPokemon.map((onePokemon, index) => (
-          <article key={index}>
+          <CardContainer key={index}>
             <h2>{onePokemon.name}</h2>
             <span onClick={() => onAddToFavourites(onePokemon)}>
               {allFavouritePokemon.some(
@@ -25,7 +25,7 @@ function Card({
               )}
             </span>
             <button onClick={() => newSelectedPokemon(index)}>More info</button>
-          </article>
+          </CardContainer>
         ))}
     </>
   );
@@ -35,3 +35,5 @@ function Card({
   /* <img src={Pokeball} alt="" width="30" height="30" /> */
 }
 export default Card;
+
+const CardContainer = styled.article``;

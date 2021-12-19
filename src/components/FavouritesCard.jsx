@@ -3,7 +3,12 @@ import styled from "styled-components";
 import Pokeball from "../images/PokeBall.svg";
 import PokeballInactive from "../images/PokeBallBlack.svg";
 
-function FavouritesCard({ onAddToFavourites, allFavouritePokemon }) {
+function FavouritesCard({
+  onAddToFavourites,
+  allFavouritePokemon,
+  onChangeView,
+  showBackPokemon,
+}) {
   return (
     <>
       {allFavouritePokemon.map((favouritePokemon, index) => (
@@ -17,7 +22,13 @@ function FavouritesCard({ onAddToFavourites, allFavouritePokemon }) {
               <img src={PokeballInactive} alt='☆' width='30' height='30' />
             )}
           </span>
-          <img src={favouritePokemon.img} alt='' />
+          <img
+            src={
+              showBackPokemon ? favouritePokemon.imgBack : favouritePokemon.img
+            }
+            alt='Nö'
+            onClick={() => onChangeView()}
+          />
           <h2>{favouritePokemon.name}</h2>
           <p>Type: {favouritePokemon.type}</p>
           <p>Stength: {favouritePokemon.strength}</p>
@@ -29,7 +40,4 @@ function FavouritesCard({ onAddToFavourites, allFavouritePokemon }) {
   );
 }
 
-{
-  /* <img src={Pokeball} alt="" width="30" height="30" /> */
-}
 export default FavouritesCard;

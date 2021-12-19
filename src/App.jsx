@@ -5,11 +5,22 @@ import Favourites from "./pages/Favourites";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Route, Routes, NavLink, Link } from "react-router-dom";
+import { saveToLocal, loadFromLocal } from "./lib/localStorage";
 
 export default function App() {
+  const initialFavouritePokemon = loadFromLocal("_favouritePokemon");
   const [pokemon, setPokemon] = useState([]);
   const [filteredPokemon, setFilteredPokemon] = useState([]);
-  const [favouritePokemon, setFavouritePokemon] = useState([]);
+  const [favouritePokemon, setFavouritePokemon] = useState(
+    initialFavouritePokemon ?? []
+  );
+
+  useEffect(() => {
+    saveToLocal("_pokemon", pokemon);
+  }, [pokemon]);
+  useEffect(() => {
+    saveToLocal("_favouritePokemon", favouritePokemon);
+  }, [favouritePokemon]);
 
   useEffect(() => {
     initialPokemon();
@@ -40,6 +51,11 @@ export default function App() {
           setPokemon(allPokemonWithType);
           setFilteredPokemon(allPokemonWithType);
         });
+      })
+      .catch(() => {
+        initialPokemon = loadFromLocal("_pokemon");
+        setPokemon(initialPokemon);
+        setFilteredPokemon(initialPokemon);
       });
   }
 
@@ -63,16 +79,15 @@ export default function App() {
     }
   }
 
+  const [showBack, setShowBack] = useState(false);
+
+  const changeView = () => {
+    setShowBack(!showBack);
+  };
+
   return (
-    <PokeWorld>
+    <>
       <Header />
-      <nav>
-        <ul>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='pokedex'>Pokedex</NavLink>
-          <NavLink to='favourite-pokemon'>Favourites</NavLink>
-        </ul>
-      </nav>
       <Routes>
         <Route
           path='/'
@@ -81,6 +96,8 @@ export default function App() {
               allPokemon={pokemon}
               onAddToFavourites={addToFavourites}
               allFavouritePokemon={favouritePokemon}
+              onChangeView={changeView}
+              showBackPokemon={showBack}
             />
           }
         />
@@ -93,6 +110,8 @@ export default function App() {
               allFavouritePokemon={favouritePokemon}
               onSetPokemon={onSetPokemon}
               allFilteredPokemon={filteredPokemon}
+              onChangeView={changeView}
+              showBackPokemon={showBack}
             />
           }
         />
@@ -105,12 +124,62 @@ export default function App() {
               allPokemon={pokemon}
               onSetPokemon={onSetPokemon}
               allFilteredPokemon={filteredPokemon}
+              onChangeView={changeView}
+              showBackPokemon={showBack}
             />
           }
         />
       </Routes>
-    </PokeWorld>
+      <Footer>
+        <nav>
+          <Linklist>
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to='pokedex'>Pokedex</NavLink>
+            <NavLink to='favourite-pokemon'>Favourites</NavLink>
+          </Linklist>
+        </nav>
+      </Footer>
+    </>
   );
 }
 
-const PokeWorld = styled.div``;
+const Footer = styled.footer`
+  background-color: #cc0000;
+  position: sticky;
+  bottom: 0;
+  padding: 1rem;
+  width: 100%;
+
+  nav {
+    width: 100%;
+  }
+`;
+
+const Linklist = styled.ul`
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+
+  a {
+    background: #b3a125;
+    border: 3px solid #3b4cca;
+    color: #3b4cca;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+  }
+
+  a.active {
+    background: #ffde00;
+    color: #3b4cca;
+  }
+
+  a:hover {
+    background: #ffde00;
+  }
+`;

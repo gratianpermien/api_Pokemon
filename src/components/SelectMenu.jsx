@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
 
 function SelectSort({ allPokemon, onSetPokemon }) {
   const [sortDirection, setSortDirection] = useState("ascending");
@@ -7,7 +8,6 @@ function SelectSort({ allPokemon, onSetPokemon }) {
   useEffect(() => sortPokemon(), [sortAttribute, sortDirection]);
 
   const sortPokemon = () => {
-    console.log({ sortAttribute, sortDirection });
     const copy = [...allPokemon];
     const sorted = copy.sort((a, b) => {
       if (sortDirection === "ascending") {
@@ -28,7 +28,7 @@ function SelectSort({ allPokemon, onSetPokemon }) {
   };
 
   return (
-    <div>
+    <SortContainer>
       <select
         onChange={changeSortDirection}
         name='sortPokemon'
@@ -46,8 +46,15 @@ function SelectSort({ allPokemon, onSetPokemon }) {
         <option value='height'>Height</option>
         <option value='weight'>Weight</option>
       </select>
-    </div>
+    </SortContainer>
   );
 }
 
 export default SelectSort;
+
+const SortContainer = styled.div`
+  margin: 0.2rem;
+  select {
+    margin: 0.1rem;
+  }
+`;
