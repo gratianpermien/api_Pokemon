@@ -185,4 +185,9 @@ const Linklist = styled.ul`
   a:hover {
     background: #ffde00;
   }
+  @media (min-width: 768px) {
+    a {
+      padding: 10px;
+    }
+  }
 `;

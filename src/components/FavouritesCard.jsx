@@ -64,4 +64,8 @@ const DetailsOfFavourite = styled.div`
   border: 2px solid black;
   border-radius: 25px;
   box-shadow: 5px 5px 5px grey;
+  @media (min-width: 768px) {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
 `;

@@ -29,4 +29,10 @@ const PokeDetails = styled.article`
   border-radius: 15px;
   border: 1px solid black;
   box-shadow: 5px 5px 5px grey;
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+    margin-left: 55rem;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
 `;

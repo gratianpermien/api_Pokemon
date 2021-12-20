@@ -90,6 +90,20 @@ const HomeSection = styled.section`
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+  @media (min-width: 768px) {
+    margin: 1rem;
+    text-align: center;
+    margin-bottom: 8rem;
+    font-size: 1.5rem;
+    h2 {
+      margin: 2rem;
+    }
+    p {
+      text-align: left;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
 `;
 
 const PokeBallContainer = styled.span`
@@ -108,10 +122,21 @@ const RandomPokemon = styled.article`
   border: 2px solid black;
   border-radius: 25px;
   box-shadow: 5px 5px 5px grey;
+  @media (min-width: 768px) {
+    p {
+      text-align: center;
+    }
+  }
+  margin-left: 10rem;
+  margin-right: 10rem;
 `;
 
 const World = styled.img`
   height: 90%;
   width: 90%;
   border-radius: 15px;
+  @media (min-width: 768px) {
+    height: 40%;
+    width: 40%;
+  }
 `;

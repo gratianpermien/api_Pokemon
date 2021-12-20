@@ -63,4 +63,12 @@ const CardContainer = styled.article`
   span {
     cursor: pointer;
   }
+  @media (min-width: 768px) {
+    width: 25rem;
+    text-align: center;
+    height: 8rem;
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
 `;

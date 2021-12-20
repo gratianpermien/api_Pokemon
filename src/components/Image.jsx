@@ -32,4 +32,9 @@ const PokemonImage = styled.img`
   margin-top: 30rem;
   transform: scale(1.5);
   cursor: pointer;
+  @media (min-width: 768px) {
+    margin-left: 60rem;
+    margin-top: 35rem;
+    transform: scale(3);
+  }
 `;
