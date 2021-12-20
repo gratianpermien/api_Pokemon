@@ -2,6 +2,7 @@ import FavouritesCard from "../components/FavouritesCard";
 import SelectSort from "../components/SelectMenu";
 import Searchbar from "../components/Searchbar";
 import styled from "styled-components";
+import Filter from "../components/Filter";
 
 function Favourites({
   allPokemon,
@@ -21,6 +22,7 @@ function Favourites({
           allFilteredPokemon={allFilteredPokemon}
           onSetPokemon={onSetPokemon}
         />
+        <Filter />
       </Sort>
       {allFavouritePokemon.length > 0 && (
         <FavouritesCard
@@ -40,11 +42,12 @@ function Favourites({
 export default Favourites;
 
 const FavouritesSection = styled.section`
-  height: 100%;
+  margin-bottom: 7rem;
 `;
 
 const Sort = styled.div`
   display: flex;
+  flex-wrap: wrap;
   background-color: #cc0000;
   padding: 0.3rem;
 `;

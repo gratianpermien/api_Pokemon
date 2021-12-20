@@ -10,7 +10,7 @@ import { saveToLocal, loadFromLocal } from "./lib/localStorage";
 export default function App() {
   const initialFavouritePokemon = loadFromLocal("_favouritePokemon");
   const [pokemon, setPokemon] = useState([]);
-  const [filteredPokemon, setFilteredPokemon] = useState([]);
+  const [allSearchedPokemon, setSearchedPokemon] = useState([]);
   const [favouritePokemon, setFavouritePokemon] = useState(
     initialFavouritePokemon ?? []
   );
@@ -49,13 +49,13 @@ export default function App() {
 
         Promise.all(pokemonPromises).then((allPokemonWithType) => {
           setPokemon(allPokemonWithType);
-          setFilteredPokemon(allPokemonWithType);
+          setSearchedPokemon(allPokemonWithType);
         });
       })
       .catch(() => {
         initialPokemon = loadFromLocal("_pokemon");
         setPokemon(initialPokemon);
-        setFilteredPokemon(initialPokemon);
+        setSearchedPokemon(initialPokemon);
       });
   }
 
@@ -87,7 +87,10 @@ export default function App() {
 
   return (
     <>
-      <Header />
+      <Link to='/'>
+        {" "}
+        <Header />{" "}
+      </Link>
       <Routes>
         <Route
           path='/'
@@ -109,7 +112,7 @@ export default function App() {
               onAddToFavourites={addToFavourites}
               allFavouritePokemon={favouritePokemon}
               onSetPokemon={onSetPokemon}
-              allFilteredPokemon={filteredPokemon}
+              allSearchedPokemon={allSearchedPokemon}
               onChangeView={changeView}
               showBackPokemon={showBack}
             />
@@ -123,7 +126,7 @@ export default function App() {
               allFavouritePokemon={favouritePokemon}
               allPokemon={pokemon}
               onSetPokemon={onSetPokemon}
-              allFilteredPokemon={filteredPokemon}
+              allSearchedPokemon={allSearchedPokemon}
               onChangeView={changeView}
               showBackPokemon={showBack}
             />
@@ -145,7 +148,7 @@ export default function App() {
 
 const Footer = styled.footer`
   background-color: #cc0000;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   padding: 1rem;
   width: 100%;

@@ -2,13 +2,14 @@ import Image from "../components/Image";
 import SelectSort from "../components/SelectMenu";
 import Searchbar from "../components/Searchbar";
 import Card from "../components/Card";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Details from "../components/Details";
 import styled from "styled-components";
+import Filter from "../components/Filter";
 
 function Pokedex({
   allPokemon,
-  allFilteredPokemon,
+  allSearchedPokemon,
   onSetPokemon,
   onAddToFavourites,
   allFavouritePokemon,
@@ -24,8 +25,13 @@ function Pokedex({
           <label htmlFor='sortPokemon'>Sort: </label>
           <SelectSort allPokemon={allPokemon} onSetPokemon={onSetPokemon} />
           <Searchbar
-            allFilteredPokemon={allFilteredPokemon}
+            allSearchedPokemon={allSearchedPokemon}
             onSetPokemon={onSetPokemon}
+          />
+          <Filter
+            onSetPokemon={onSetPokemon}
+            allPokemon={allPokemon}
+            allSearchedPokemon={allSearchedPokemon}
           />
         </Sort>
         <Image
@@ -49,10 +55,17 @@ function Pokedex({
 
 export default Pokedex;
 
-const PokedexContainer = styled.section``;
+const PokedexContainer = styled.section`
+  margin-bottom: 5rem;
+
+  label {
+    color: white;
+  }
+`;
 
 const Sort = styled.div`
   display: flex;
+  flex-wrap: wrap;
   background-color: #cc0000;
   padding: 0.3rem;
 `;

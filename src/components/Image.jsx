@@ -9,17 +9,15 @@ function Image({
   return (
     <>
       {allPokemon.length && (
-        <ImageContainer>
-          <PokemonImage
-            src={
-              showBackPokemon
-                ? allPokemon[selectedFromCard].imgBack
-                : allPokemon[selectedFromCard].img
-            }
-            alt='Nö'
-            onClick={() => onChangeView()}
-          />
-        </ImageContainer>
+        <PokemonImage
+          src={
+            showBackPokemon
+              ? allPokemon[selectedFromCard].imgBack
+              : allPokemon[selectedFromCard].img
+          }
+          alt='Nö'
+          onClick={() => onChangeView()}
+        />
       )}
     </>
   );
@@ -27,11 +25,11 @@ function Image({
 
 export default Image;
 
-const PokemonImage = styled.img``;
-
-const ImageContainer = styled.div`
-  position: sticky;
+const PokemonImage = styled.img`
+  position: fixed;
   top: 0;
-  padding-left: 12rem;
-  padding-top: 5rem;
+  margin-left: 13rem;
+  margin-top: 30rem;
+  transform: scale(1.5);
+  cursor: pointer;
 `;
